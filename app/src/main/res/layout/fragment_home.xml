@@ -1,0 +1,250 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".HomeFragment">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Home Maintenance Services"
+        android:textStyle="bold"
+        android:textSize="25sp"
+        android:fontFamily="@font/montserrat"
+        android:textColor="#000"
+        android:layout_margin="30dp"/>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="30dp"
+        app:cardCornerRadius="20dp"
+        app:cardElevation="20dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/category_plumber"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="20dp"
+                android:layout_marginBottom="20dp"
+                android:src="@drawable/tap" />
+
+            <TextView
+                android:id="@+id/category_plumber_txt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/category_plumber"
+                android:layout_gravity="center"
+                android:layout_marginStart="20dp"
+                android:fontFamily="@font/montserrat"
+                android:text="Plumber"
+                android:textColor="#000"
+                android:textSize="17sp" />
+
+            <ImageView
+                android:id="@+id/category_carpenter"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_centerHorizontal="true"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="20dp"
+                android:layout_marginBottom="20dp"
+                android:src="@drawable/hacksaw" />
+
+            <TextView
+                android:id="@+id/category_carpenter_txt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/category_carpenter"
+                android:layout_centerHorizontal="true"
+                android:layout_gravity="center"
+                android:fontFamily="@font/montserrat"
+                android:text="Carpenter"
+                android:textColor="#000"
+                android:textSize="17sp" />
+
+            <ImageView
+                android:id="@+id/category_electrician"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_alignParentEnd="true"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="20dp"
+                android:layout_marginBottom="20dp"
+                android:src="@drawable/lightning" />
+
+            <TextView
+                android:id="@+id/category_electrician_txt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/category_electrician"
+                android:layout_alignParentEnd="true"
+                android:layout_gravity="center"
+                android:layout_marginEnd="20dp"
+                android:fontFamily="@font/montserrat"
+                android:text="Electrician"
+                android:textColor="#000"
+                android:textSize="17sp" />
+
+
+            <ImageView
+                android:id="@+id/category_massage"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_below="@+id/category_plumber_txt"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="20dp"
+                android:layout_marginBottom="20dp"
+                android:src="@drawable/cream" />
+
+            <TextView
+                android:id="@+id/category_massage_txt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/category_massage"
+                android:layout_gravity="center"
+                android:layout_marginStart="20dp"
+                android:fontFamily="@font/montserrat"
+                android:text="Massage"
+                android:textColor="#000"
+                android:textSize="17sp" />
+
+            <ImageView
+                android:id="@+id/category_cleaning"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_below="@+id/category_carpenter_txt"
+                android:layout_centerHorizontal="true"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="20dp"
+                android:layout_marginBottom="20dp"
+                android:src="@drawable/scoop" />
+
+            <TextView
+                android:id="@+id/category_cleaning_txt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/category_cleaning"
+                android:layout_centerHorizontal="true"
+                android:layout_gravity="center"
+                android:fontFamily="@font/montserrat"
+                android:text="Cleaning"
+                android:textColor="#000"
+                android:textSize="17sp" />
+
+            <ImageView
+                android:id="@+id/category_paint"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_below="@+id/category_electrician_txt"
+                android:layout_alignParentEnd="true"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="20dp"
+                android:layout_marginBottom="20dp"
+                android:src="@drawable/brush" />
+
+            <TextView
+                android:id="@+id/category_paint_txt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/category_paint"
+                android:layout_alignParentEnd="true"
+                android:layout_gravity="center"
+                android:layout_marginEnd="20dp"
+                android:fontFamily="@font/montserrat"
+                android:text="Painting"
+                android:textColor="#000"
+                android:textSize="17sp" />
+
+            <ImageView
+                android:id="@+id/category_watching_machine"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_below="@+id/category_massage_txt"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="20dp"
+                android:layout_marginBottom="20dp"
+                android:src="@drawable/washing_machine" />
+
+            <TextView
+                android:id="@+id/category_watching_machine_txt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/category_watching_machine"
+                android:layout_gravity="center"
+                android:layout_margin="10dp"
+                android:fontFamily="@font/montserrat"
+                android:text="Appliances"
+                android:textColor="#000"
+                android:textSize="17sp" />
+
+            <ImageView
+                android:id="@+id/category_saloon"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_below="@+id/category_cleaning_txt"
+                android:layout_centerHorizontal="true"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="20dp"
+                android:layout_marginBottom="20dp"
+                android:src="@drawable/hair_salon" />
+
+            <TextView
+                android:id="@+id/category_saloon_txt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/category_saloon"
+                android:layout_centerHorizontal="true"
+                android:layout_gravity="center"
+                android:fontFamily="@font/montserrat"
+                android:text="Cleaning"
+                android:textColor="#000"
+                android:textSize="17sp" />
+
+            <ImageView
+                android:id="@+id/category_delivery"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_below="@+id/category_paint_txt"
+                android:layout_alignParentEnd="true"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="20dp"
+                android:layout_marginBottom="20dp"
+                android:src="@drawable/delivery_truck" />
+
+            <TextView
+                android:id="@+id/category_delivery_txt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/category_delivery"
+                android:layout_alignParentEnd="true"
+                android:layout_gravity="center"
+                android:layout_marginEnd="20dp"
+                android:fontFamily="@font/montserrat"
+                android:text="Electrician"
+                android:textColor="#000"
+                android:textSize="17sp" />
+
+        </RelativeLayout>
+
+    </androidx.cardview.widget.CardView>
+
+</LinearLayout>
