@@ -47,7 +47,7 @@ public class CategoryServiceProviderAdapter extends RecyclerView.Adapter<Categor
             i.putExtra("address1", data.address1);
             i.putExtra("price", data.price);
             i.putExtra("locality", data.locality);
-            i.putExtra("pincode", data.pincode);
+            i.putExtra("pincode", data.pin_code);
             i.putExtra("state", data.state);
             i.putExtra("dp", data.dp);
             context.startActivity(i);

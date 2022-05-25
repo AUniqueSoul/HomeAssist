@@ -69,8 +69,8 @@ public class ServiceProviderProfile extends AppCompatActivity {
         tvPrice.setText("₹ "+price);
         btn.setOnClickListener(view -> {
             Map<String,Object> map = new HashMap<>();
-            map.put("customer_uid", customer_uid);
-            map.put("server_provider_uid", server_provider_uid);
+            map.put("sender", customer_uid);
+            map.put("receiver", server_provider_uid);
             map.put("address1",address);
             map.put("name", name);
             map.put("locality",locality);
@@ -83,7 +83,7 @@ public class ServiceProviderProfile extends AppCompatActivity {
                 btn.setBackgroundColor(getColor(R.color.colorAccent2));
             }).addOnFailureListener(e -> {
                 //Log.d(TAG,"Failure Details"+e.toString());
-                Toast.makeText(this, "Unable to Update", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Unable to Update due to "+e.toString(), Toast.LENGTH_SHORT).show();
             });
         });
     }

@@ -2,23 +2,25 @@ package android.example.house_assist;
 
 public class ServiceProvider {
 
-    String address1, address2, dp, locality, name, pincode, price, service_type, state, server_provider_uid, customer_uid;
+    String address1, address2, dp, locality, name, pin_code, price, service_type, state, server_provider_uid, customer_uid, sender, receiver;
 
     public ServiceProvider(){
     }
 
-    public ServiceProvider(String address1, String address2, String dp, String locality, String name, String pincode, String price, String service_type, String state, String server_provider_uid, String customer_uid) {
+    public ServiceProvider(String address1, String address2, String dp, String locality, String name, String pin_code, String price, String service_type, String state, String server_provider_uid, String customer_uid, String sender, String receiver) {
         this.address1 = address1;
         this.address2 = address2;
         this.dp = dp;
         this.locality = locality;
         this.name = name;
-        this.pincode = pincode;
+        this.pin_code = pin_code;
         this.price = price;
         this.service_type = service_type;
         this.state = state;
         this.server_provider_uid = server_provider_uid;
         this.customer_uid = customer_uid;
+        this.sender = sender;
+        this.receiver = receiver;
     }
 
     public String getAddress1() {
@@ -61,12 +63,12 @@ public class ServiceProvider {
         this.name = name;
     }
 
-    public String getPincode() {
-        return pincode;
+    public String getPin_code() {
+        return pin_code;
     }
 
-    public void setPincode(String pincode) {
-        this.pincode = pincode;
+    public void setPin_code(String pin_code) {
+        this.pin_code = pin_code;
     }
 
     public String getPrice() {
@@ -107,5 +109,21 @@ public class ServiceProvider {
 
     public void setCustomer_uid(String customer_uid) {
         this.customer_uid = customer_uid;
+    }
+
+    public String getSender() {
+        return sender;
+    }
+
+    public void setSender(String sender) {
+        this.sender = sender;
+    }
+
+    public String getReceiver() {
+        return receiver;
+    }
+
+    public void setReceiver(String receiver) {
+        this.receiver = receiver;
     }
 }

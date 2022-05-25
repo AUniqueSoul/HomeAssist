@@ -24,10 +24,6 @@ import android.widget.LinearLayout;
 
 import com.miguelcatalan.materialsearchview.MaterialSearchView;
 
-
-/**
- * A simple {@link Fragment} subclass.
- */
 public class Fragment_main extends Fragment {
 
 //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
@@ -50,7 +46,7 @@ public class Fragment_main extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
+
         contextid = inflater.getContext();
         Log.d(TAG,"fmain");
         bundle = getArguments();
@@ -76,15 +72,12 @@ public class Fragment_main extends Fragment {
 
 //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
         //Electrician
-        electrician.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent  = new Intent(contextid,Activity_WhichServiceProviders.class);
-                intent.putExtra("userLat",userLat);
-                intent.putExtra("userLng",userLng);
-                intent.putExtra("type","Electrician");
-                startActivity(intent);
-            }
+        electrician.setOnClickListener(v -> {
+            Intent intent  = new Intent(contextid,Activity_WhichServiceProviders.class);
+            intent.putExtra("userLat",userLat);
+            intent.putExtra("userLng",userLng);
+            intent.putExtra("type","Electrician");
+            startActivity(intent);
         });
 //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
         //Carpenter
