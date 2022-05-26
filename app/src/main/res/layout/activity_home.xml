@@ -1,11 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
+<androidx.drawerlayout.widget.DrawerLayout
+    android:id="@+id/activity_home_drawer_layout"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ActivityHome">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
@@ -16,7 +21,7 @@
             android:layout_height="wrap_content">
 
             <androidx.appcompat.widget.Toolbar
-                android:id="@+id/main_activity_toolbar"
+                android:id="@+id/home_activity_toolbar"
                 app:titleTextColor="#fff"
                 app:titleTextAppearance="@style/RobotoTextViewStyle"
                 android:layout_width="match_parent"
@@ -39,14 +44,29 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 
-    <com.ismaeldivita.chipnavigation.ChipNavigationBar
-        android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:id="@+id/bottom_nav"
-        android:layout_alignParentBottom="true"
-        android:elevation="18dp"
-        android:padding="8dp"
-        app:cnb_unselectedColor="@color/colorAccent"
-        app:cnb_menuResource="@menu/bottom_menu"/>
+        <com.ismaeldivita.chipnavigation.ChipNavigationBar
+            android:id="@+id/bottom_nav"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_alignParentBottom="true"
+            android:elevation="18dp"
+            android:padding="8dp"
+            android:background="#fff"
+            app:cnb_menuResource="@menu/bottom_menu"
+            app:cnb_unselectedColor="@color/colorAccent" />
 
-</RelativeLayout>
+    </RelativeLayout>
+
+    <com.google.android.material.navigation.NavigationView
+        android:id="@+id/activity_home_navigation_view"
+        android:layout_width="wrap_content"
+        android:layout_gravity="start"
+        app:itemTextAppearance="@style/RobotoTextViewStyle"
+        android:fitsSystemWindows="true"
+        app:headerLayout="@layout/nav_header_main"
+        app:itemTextColor="#212121"
+        app:itemBackground="@color/whiteTextColor"
+        app:menu="@menu/activity_main_drawer"
+        android:layout_height="match_parent"/>
+
+</androidx.drawerlayout.widget.DrawerLayout>

@@ -17,6 +17,9 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
+            android:name=".Activity_CustomerDetails"
+            android:exported="false" />
+        <activity
             android:name=".ServiceProviderProfile"
             android:exported="false" />
         <activity
@@ -30,9 +33,6 @@
             android:exported="false" />
         <activity
             android:name=".ActivityHome"
-            android:exported="false" />
-        <activity
-            android:name=".AcitivityHome"
             android:exported="false" />
         <activity
             android:name=".Activity_Chat"

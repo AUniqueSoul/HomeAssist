@@ -363,46 +363,42 @@ public class MainActivity extends AppCompatActivity {
 
         @Override
         protected Boolean doInBackground(String... params) {
-            myDB.collection("users").document(params[0]).get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
-                @Override
-                public void onComplete(@NonNull Task<DocumentSnapshot> task) {
-                    if(task.isSuccessful())
-                    {
-                        DocumentSnapshot documentSnapshot = task.getResult();
-                        CustomerUser_Data data = new CustomerUser_Data();
-                        data.setName(documentSnapshot.getData().get("name").toString());
-                        data.setEmail(documentSnapshot.getData().get("email").toString());
-                        data.setMobile(documentSnapshot.getData().get("mobile").toString());
-                        data.setAddress1(documentSnapshot.getData().get("address1").toString());
-                        data.setAddress2(documentSnapshot.getData().get("address2").toString());
-                        data.setLocality(documentSnapshot.getData().get("locality").toString());
-                        data.setPincode(documentSnapshot.getData().get("pincode").toString());
-                        data.setState(documentSnapshot.getData().get("state").toString());
-                        data.setFull_Address(documentSnapshot.getData().get("fulladdress").toString());
-                        data.setLatitude(documentSnapshot.getData().get("lat").toString());
-                        data.setLongitude(documentSnapshot.getData().get("lng").toString());
-                        Log.d(TAG,"Data reterived");
-                        bundle.putParcelable("customer_data",data);
-                        getSupportActionBar().setTitle("Welcome, "+data.getName());
-                        nav_header_email.setText(data.getEmail());
-                        nav_header_name.setText(data.getName());
-                        userLat = Double.parseDouble(data.getLatitude().toString());
-                        userLng = Double.parseDouble(data.getLongitude().toString());
-                        SharedPreferences sp = getSharedPreferences("UID",Context.MODE_PRIVATE);
-                        sp.edit().putString("name",data.getName()).apply();
-                        Gson gson = new Gson();
-                        String json = gson.toJson(data);
-                        sp.edit().putString("user",json).apply();
-                        loadHomeFragmentFirstTime();
-                        progressBarUnset();
-                    }
-                    else
-                    {
-                        progressBarUnset();
-                        Log.d(TAG,"Error User Data Not Fetched");
-                    }
+            myDB.collection("users").document(params[0]).get().addOnCompleteListener(task -> {
+                if(task.isSuccessful())
+                {
+                    DocumentSnapshot documentSnapshot = task.getResult();
+                    CustomerUser_Data data = new CustomerUser_Data();
+                    data.setName(documentSnapshot.getData().get("name").toString());
+                    data.setEmail(documentSnapshot.getData().get("email").toString());
+                    data.setMobile(documentSnapshot.getData().get("mobile").toString());
+                    data.setAddress1(documentSnapshot.getData().get("address1").toString());
+                    data.setAddress2(documentSnapshot.getData().get("address2").toString());
+                    data.setLocality(documentSnapshot.getData().get("locality").toString());
+                    data.setPincode(documentSnapshot.getData().get("pincode").toString());
+                    data.setState(documentSnapshot.getData().get("state").toString());
+                    data.setFull_Address(documentSnapshot.getData().get("fulladdress").toString());
+                    data.setLatitude(documentSnapshot.getData().get("lat").toString());
+                    data.setLongitude(documentSnapshot.getData().get("lng").toString());
+                    Log.d(TAG,"Data reterived");
+                    bundle.putParcelable("customer_data",data);
+                    getSupportActionBar().setTitle("Welcome, "+data.getName());
+                    nav_header_email.setText(data.getEmail());
+                    nav_header_name.setText(data.getName());
+                    userLat = Double.parseDouble(data.getLatitude().toString());
+                    userLng = Double.parseDouble(data.getLongitude().toString());
+                    SharedPreferences sp = getSharedPreferences("UID",Context.MODE_PRIVATE);
+                    sp.edit().putString("name",data.getName()).apply();
+                    Gson gson = new Gson();
+                    String json = gson.toJson(data);
+                    sp.edit().putString("user",json).apply();
+                    loadHomeFragmentFirstTime();
+                    progressBarUnset();
                 }
-
+                else
+                {
+                    progressBarUnset();
+                    Log.d(TAG,"Error User Data Not Fetched");
+                }
             });
             return true;
         }

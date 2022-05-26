@@ -100,11 +100,22 @@ public class Activity_ServiceProviderDetails extends AppCompatActivity {
             map.put("price",price.getText().toString().trim());
             map.put("fulladdress","NA");
             myDB.collection(spinner.getSelectedItem().toString()).add(map).addOnSuccessListener(aVoid -> {
-                progressBarUnset();
-                Toast.makeText(Activity_ServiceProviderDetails.this, "Welcome",
-                        Toast.LENGTH_SHORT).show();
-                Intent intent = new Intent(Activity_ServiceProviderDetails.this, ActivityHome.class);
-                startActivity(intent);
+                Map<String,Object> users = new HashMap<>();
+                users.put("user_uid", uid);
+                users.put("name", name);
+                users.put("email", email);
+                users.put("user_type" , "service_provider");
+                myDB.collection("Users").document(uid).set(users).addOnCompleteListener(task -> {
+                    progressBarUnset();
+                    Toast.makeText(Activity_ServiceProviderDetails.this, "Welcome",
+                            Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(Activity_ServiceProviderDetails.this, ActivityHome.class);
+                    startActivity(intent);
+                }).addOnFailureListener(e -> {
+                    progressBarSet();
+                    Log.d(TAG,"Failure Details"+e.toString());
+                    Toast.makeText(Activity_ServiceProviderDetails.this, "Unable to Update", Toast.LENGTH_SHORT).show();
+                });
             }).addOnFailureListener(e -> {
                 progressBarSet();
                 Log.d(TAG,"Failure Details"+e.toString());

@@ -12,6 +12,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -24,6 +25,7 @@ public class OrderFragment extends Fragment {
 
     private static final String TAG = "OrderFrag";
     Context context;
+    TextView tvServiceRequests, tvMyOrders;
     RecyclerView rvRequests, rvOrders;
     ArrayList<ServiceProvider> serviceRequestsArrayList;
     ArrayList<ServiceProvider> ordersArrayList;
@@ -39,6 +41,7 @@ public class OrderFragment extends Fragment {
 
         View view = inflater.inflate(R.layout.fragment_order, container, false);
         context = view.getContext();
+        tvServiceRequests = view.findViewById(R.id.tv_service_requests);
         rvRequests = view.findViewById(R.id.rv_service_requests);
         rvRequests.setHasFixedSize(true);
         rvRequests.setLayoutManager(new LinearLayoutManager(context));
@@ -70,6 +73,7 @@ public class OrderFragment extends Fragment {
 
         db.collection("ServiceRequests").whereEqualTo("receiver", uid).addSnapshotListener((value, error) -> {
             assert value != null;
+
             for (DocumentChange dc : value.getDocumentChanges()) {
                 if (dc.getType() == DocumentChange.Type.ADDED) {
                     serviceRequestsArrayList.add(dc.getDocument().toObject(ServiceProvider.class));
@@ -83,8 +87,11 @@ public class OrderFragment extends Fragment {
     @SuppressLint("NotifyDataSetChanged")
     private void getOrders() {
 
-        db.collection("Orders").addSnapshotListener((value, error) -> {
+        db.collection("Orders").whereEqualTo("customer_uid", uid).addSnapshotListener((value, error) -> {
             assert value != null;
+            if (value!=null){
+                tvServiceRequests.setVisibility(View.GONE);
+            }
             for (DocumentChange dc : value.getDocumentChanges()) {
                 if (dc.getType() == DocumentChange.Type.ADDED) {
                     ordersArrayList.add(dc.getDocument().toObject(ServiceProvider.class));

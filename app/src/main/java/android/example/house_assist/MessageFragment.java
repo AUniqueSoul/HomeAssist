@@ -25,13 +25,6 @@ public class MessageFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_message, container, false);
 
 
-        logout = view.findViewById(R.id.logout);
-
-        logout.setOnClickListener(view1 -> {
-
-            FirebaseAuth.getInstance().signOut();
-            startActivity(new Intent(getActivity(),Activity_Start.class));
-        });
 
         return view;
     }
