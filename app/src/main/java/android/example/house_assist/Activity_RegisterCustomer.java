@@ -22,7 +22,7 @@ public class Activity_RegisterCustomer extends AppCompatActivity {
     private EditText customer_name,customer_email,customer_mobile,customer_password;
     private Button customer_SignUp;
     FirebaseAuth mAuth;
-    String name, email, password;
+    String name, email, password, phone;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,15 +60,15 @@ public class Activity_RegisterCustomer extends AppCompatActivity {
                     name = customer_name.getText().toString().trim();
                     email = customer_email.getText().toString().trim();
                     password = customer_password.getText().toString().trim();
+                    phone = customer_mobile.getText().toString().trim();
 
                     mAuth = FirebaseAuth.getInstance();
                     mAuth.createUserWithEmailAndPassword(customer_email.getText().toString().trim(), customer_password.getText().toString().trim()).addOnCompleteListener(task -> {
                         if (task.isSuccessful()){
-                            Intent intent = new Intent(Activity_RegisterCustomer.this, ActivityHome.class);
-                            /*intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                            Intent intent = new Intent(Activity_RegisterCustomer.this, Activity_CustomerDetails.class);
                             intent.putExtra("name", name);
-                            intent.putExtra("email", email);*/
+                            intent.putExtra("email", email);
+                            intent.putExtra("phone", phone);
                             startActivity(intent);
                         } else {
                             Toast.makeText(Activity_RegisterCustomer.this, "Sorry! Failed to register", Toast.LENGTH_SHORT).show();

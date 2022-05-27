@@ -35,7 +35,7 @@ public class Activity_ServiceProviderDetails extends AppCompatActivity {
     private TextView textView;
     private ProgressBar progressBar;
     private static final String TAG="ServiceDetails";
-    private String name, email, uid;
+    private String name, email, phone, uid;
     private Button btn;
     private ProgressDialog progressDialog;
     private EditText price;
@@ -50,6 +50,7 @@ public class Activity_ServiceProviderDetails extends AppCompatActivity {
 
         name = getIntent().getStringExtra("name");
         email = getIntent().getStringExtra("email");
+        phone = getIntent().getStringExtra("phone");
 
         user = FirebaseAuth.getInstance().getCurrentUser();
         assert user != null;
@@ -94,11 +95,11 @@ public class Activity_ServiceProviderDetails extends AppCompatActivity {
             map.put("address2",address2.getText().toString().trim());
             map.put("name", name);
             map.put("email", email);
+            map.put("phone", phone);
             map.put("locality",locality.getText().toString().trim());
             map.put("state",state.getText().toString().trim());
             map.put("pincode",pincode.getText().toString().trim());
             map.put("price",price.getText().toString().trim());
-            map.put("fulladdress","NA");
             myDB.collection(spinner.getSelectedItem().toString()).add(map).addOnSuccessListener(aVoid -> {
                 Map<String,Object> users = new HashMap<>();
                 users.put("user_uid", uid);

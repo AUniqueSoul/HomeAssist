@@ -21,7 +21,7 @@ public class Activity_RegisterServiceProvider extends AppCompatActivity {
     private EditText serviceprovider_name,serviceprovider_email,serviceprovider_mobile,serviceprovider_password;
     private Button serviceprovider_SignUp;
     FirebaseAuth mAuth;
-    String name, email, password;
+    String name, email, password, phone;
     //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,6 +58,7 @@ public class Activity_RegisterServiceProvider extends AppCompatActivity {
                     name = serviceprovider_name.getText().toString().trim();
                     email = serviceprovider_email.getText().toString().trim();
                     password = serviceprovider_password.getText().toString().trim();
+                    phone = serviceprovider_mobile.getText().toString().trim();
 
                     mAuth = FirebaseAuth.getInstance();
                     mAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(task -> {
@@ -67,6 +68,7 @@ public class Activity_RegisterServiceProvider extends AppCompatActivity {
                            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);*/
                            intent.putExtra("name", name);
                            intent.putExtra("email", email);
+                           intent.putExtra("phone", phone);
                            startActivity(intent);
                            Toast.makeText(Activity_RegisterServiceProvider.this, "Registered Successfully!", Toast.LENGTH_SHORT).show();
                        } else {
