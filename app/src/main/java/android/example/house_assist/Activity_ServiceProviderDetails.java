@@ -52,6 +52,7 @@ public class Activity_ServiceProviderDetails extends AppCompatActivity {
         email = getIntent().getStringExtra("email");
         phone = getIntent().getStringExtra("phone");
 
+
         user = FirebaseAuth.getInstance().getCurrentUser();
         assert user != null;
         uid = user.getUid();
@@ -84,7 +85,6 @@ public class Activity_ServiceProviderDetails extends AppCompatActivity {
         textView.setText("Hello "+getIntent().getStringExtra("name"));
         spinner.setAdapter(dataAdapter);
         myDB = FirebaseFirestore.getInstance();
-        email = getIntent().getStringExtra("email");
         btn.setOnClickListener(v -> {
             if(validate()){
                 progressBarSet();
@@ -98,13 +98,14 @@ public class Activity_ServiceProviderDetails extends AppCompatActivity {
             map.put("phone", phone);
             map.put("locality",locality.getText().toString().trim());
             map.put("state",state.getText().toString().trim());
-            map.put("pincode",pincode.getText().toString().trim());
+            map.put("pin_code",pincode.getText().toString().trim());
             map.put("price",price.getText().toString().trim());
-            myDB.collection(spinner.getSelectedItem().toString()).add(map).addOnSuccessListener(aVoid -> {
+            myDB.collection(spinner.getSelectedItem().toString()).document(uid).set(map).addOnSuccessListener(aVoid -> {
                 Map<String,Object> users = new HashMap<>();
                 users.put("user_uid", uid);
                 users.put("name", name);
                 users.put("email", email);
+                users.put("phone", phone);
                 users.put("user_type" , "service_provider");
                 myDB.collection("Users").document(uid).set(users).addOnCompleteListener(task -> {
                     progressBarUnset();

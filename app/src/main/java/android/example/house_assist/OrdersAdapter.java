@@ -1,6 +1,7 @@
 package android.example.house_assist;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -52,7 +53,18 @@ public class OrdersAdapter extends RecyclerView.Adapter<OrdersAdapter.MyViewHold
         holder.locality.setText(data.locality);
         holder.address.setText(data.pin_code);
         holder.price.setText(data.price);
-
+        holder.cv.setOnClickListener(view -> {
+            Intent i = new Intent(context, ServiceProviderProfile.class);
+            i.putExtra("server_provider_uid", data.server_provider_uid);
+            i.putExtra("name", data.name);
+            i.putExtra("address1", data.address1);
+            i.putExtra("price", data.price);
+            i.putExtra("locality", data.locality);
+            i.putExtra("pin_code", data.pin_code);
+            i.putExtra("state", data.state);
+            i.putExtra("phone", data.phone);
+            context.startActivity(i);
+        });
     }
 
     @Override
@@ -62,11 +74,13 @@ public class OrdersAdapter extends RecyclerView.Adapter<OrdersAdapter.MyViewHold
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
 
+        CardView cv;
         TextView name, locality, address, price;
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
 
+            cv = itemView.findViewById(R.id.cv_order);
             name = itemView.findViewById(R.id.order_name);
             address = itemView.findViewById(R.id.order_locality);
             locality = itemView.findViewById(R.id.order_address);

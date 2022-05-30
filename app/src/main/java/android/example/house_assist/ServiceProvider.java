@@ -2,12 +2,12 @@ package android.example.house_assist;
 
 public class ServiceProvider {
 
-    String address1, address2, dp, locality, name, pin_code, price, service_type, state, server_provider_uid, customer_uid, sender, receiver;
+    String address1, address2, dp, locality, name, pin_code, price, phone, service_type, state, server_provider_uid, customer_uid, sender, receiver;
 
     public ServiceProvider(){
     }
 
-    public ServiceProvider(String address1, String address2, String dp, String locality, String name, String pin_code, String price, String service_type, String state, String server_provider_uid, String customer_uid, String sender, String receiver) {
+    public ServiceProvider(String address1, String address2, String dp, String locality, String name, String pin_code, String price, String phone, String service_type, String state, String server_provider_uid, String customer_uid, String sender, String receiver) {
         this.address1 = address1;
         this.address2 = address2;
         this.dp = dp;
@@ -15,6 +15,7 @@ public class ServiceProvider {
         this.name = name;
         this.pin_code = pin_code;
         this.price = price;
+        this.phone = phone;
         this.service_type = service_type;
         this.state = state;
         this.server_provider_uid = server_provider_uid;
@@ -77,6 +78,14 @@ public class ServiceProvider {
 
     public void setPrice(String price) {
         this.price = price;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
     }
 
     public String getService_type() {

@@ -43,52 +43,44 @@ public class Activity_RegisterServiceProvider extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
         //Events
-        serviceprovider_Login.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(Activity_RegisterServiceProvider.this,Activity_LogInServiceProvider.class));
-            }
-        });
+        serviceprovider_Login.setOnClickListener(v -> startActivity(new Intent(Activity_RegisterServiceProvider.this,Activity_LogInServiceProvider.class)));
         //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
-        serviceprovider_SignUp.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if(validate())
-                {
-                    name = serviceprovider_name.getText().toString().trim();
-                    email = serviceprovider_email.getText().toString().trim();
-                    password = serviceprovider_password.getText().toString().trim();
-                    phone = serviceprovider_mobile.getText().toString().trim();
+        serviceprovider_SignUp.setOnClickListener(v -> {
+            if(validate())
+            {
+                name = serviceprovider_name.getText().toString().trim();
+                email = serviceprovider_email.getText().toString().trim();
+                password = serviceprovider_password.getText().toString().trim();
+                phone = serviceprovider_mobile.getText().toString().trim();
 
-                    mAuth = FirebaseAuth.getInstance();
-                    mAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(task -> {
-                       if (task.isSuccessful()){
-                           Intent intent = new Intent(Activity_RegisterServiceProvider.this, Activity_ServiceProviderDetails.class);
-                           /*intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                           intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);*/
-                           intent.putExtra("name", name);
-                           intent.putExtra("email", email);
-                           intent.putExtra("phone", phone);
-                           startActivity(intent);
-                           Toast.makeText(Activity_RegisterServiceProvider.this, "Registered Successfully!", Toast.LENGTH_SHORT).show();
-                       } else {
-                           Toast.makeText(Activity_RegisterServiceProvider.this, "Sorry! Failed to register", Toast.LENGTH_SHORT).show();
-                       }
-                    }).addOnFailureListener(e -> {
-                        Toast.makeText(Activity_RegisterServiceProvider.this, e.toString(), Toast.LENGTH_SHORT).show();
-                    });
+                mAuth = FirebaseAuth.getInstance();
+                mAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(task -> {
+                   if (task.isSuccessful()){
+                       Intent intent = new Intent(Activity_RegisterServiceProvider.this, Activity_ServiceProviderDetails.class);
+                       /*intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                       intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);*/
+                       intent.putExtra("name", name);
+                       intent.putExtra("email", email);
+                       intent.putExtra("phone", phone);
+                       startActivity(intent);
+                       Toast.makeText(Activity_RegisterServiceProvider.this, "Registered Successfully!", Toast.LENGTH_SHORT).show();
+                   } else {
+                       Toast.makeText(Activity_RegisterServiceProvider.this, "Sorry! Failed to register", Toast.LENGTH_SHORT).show();
+                   }
+                }).addOnFailureListener(e -> {
+                    Toast.makeText(Activity_RegisterServiceProvider.this, e.toString(), Toast.LENGTH_SHORT).show();
+                });
 
-                    /*Intent intent = new Intent(Activity_RegisterServiceProvider.this,Activity_OTPServiceProvider.class);
-                    intent.putExtra("name",serviceprovider_name.getText().toString().trim());
-                    intent.putExtra("mobile",serviceprovider_mobile.getText().toString().trim());
-                    intent.putExtra("email",serviceprovider_email.getText().toString().trim());
-                    intent.putExtra("password",serviceprovider_password.getText().toString().trim());
-                    intent.putExtra("type","OTP");
-                    startActivity(intent);*/
-
-                }
+                /*Intent intent = new Intent(Activity_RegisterServiceProvider.this,Activity_OTPServiceProvider.class);
+                intent.putExtra("name",serviceprovider_name.getText().toString().trim());
+                intent.putExtra("mobile",serviceprovider_mobile.getText().toString().trim());
+                intent.putExtra("email",serviceprovider_email.getText().toString().trim());
+                intent.putExtra("password",serviceprovider_password.getText().toString().trim());
+                intent.putExtra("type","OTP");
+                startActivity(intent);*/
 
             }
+
         });
     }
 

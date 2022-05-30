@@ -12,6 +12,7 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
+import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -69,14 +70,18 @@ public class ServiceRequestsAdapter extends RecyclerView.Adapter<ServiceRequests
             map.put("state", data.state);
             map.put("pin_code", data.pin_code);
             map.put("price", data.price);
+            map.put("phone", data.phone);
             db.collection("Orders").add(map).addOnSuccessListener(aVoid -> {
                 Toast.makeText(context, "CONFIRMED", Toast.LENGTH_SHORT).show();
+                db.collection("ServiceRequests").document(uid).delete();
+                notifyItemRemoved(position);
             }).addOnFailureListener(e -> {
                 Log.d(TAG, "Failure Details due to "+e.toString());
                 Toast.makeText(context, "Unable to Update due to "+e.toString(), Toast.LENGTH_SHORT).show();
             });
         });
     }
+
 
     @Override
     public int getItemCount() {

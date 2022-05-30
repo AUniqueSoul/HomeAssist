@@ -1,8 +1,14 @@
 package android.example.house_assist;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 
+import android.Manifest;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.Button;
@@ -19,10 +25,11 @@ import java.util.Map;
 
 public class ServiceProviderProfile extends AppCompatActivity {
 
+    CardView cv;
     ImageView ivDp;
-    TextView tvName, tvLocality, tvAddress, tvState, tvPinCode, tvPrice;
+    TextView tvName, tvLocality, tvAddress, tvState, tvPinCode, tvPrice, tvPhone;
     Button btn;
-    String dp, name, locality, address, state, pinCode, price, customer_uid, server_provider_uid;
+    String dp, name, locality, address, state, pin_code, phone, price, customer_uid, server_provider_uid;
     FirebaseFirestore myDB;
     FirebaseUser user;
 
@@ -37,9 +44,10 @@ public class ServiceProviderProfile extends AppCompatActivity {
         address = intent.getStringExtra("address1");
         price = intent.getStringExtra("price");
         locality = intent.getStringExtra("locality");
-        pinCode = intent.getStringExtra("pincode");
+        pin_code = intent.getStringExtra("pin_code");
         state = intent.getStringExtra("state");
         dp = intent.getStringExtra("dp");
+        phone = intent.getStringExtra("phone");
 
         ivDp = findViewById(R.id.service_provider_dp);
         tvName = findViewById(R.id.service_provider_name);
@@ -48,6 +56,8 @@ public class ServiceProviderProfile extends AppCompatActivity {
         tvState = findViewById(R.id.service_provider_state);
         tvPinCode = findViewById(R.id.service_provider_pincode);
         tvPrice = findViewById(R.id.service_provider_price);
+        tvPhone = findViewById(R.id.service_provider_phone);
+        cv = findViewById(R.id.cr_phone);
         btn = findViewById(R.id.btn_service_provider);
 
         myDB = FirebaseFirestore.getInstance();
@@ -65,8 +75,15 @@ public class ServiceProviderProfile extends AppCompatActivity {
         tvLocality.setText(locality);
         tvAddress.setText(address);
         tvState.setText(state);
-        tvPinCode.setText(pinCode);
+        tvPinCode.setText(pin_code);
+        tvPhone.setText(phone);
         tvPrice.setText("₹ "+price);
+        cv.setOnClickListener(view -> {
+            makeCall();
+            /*Intent i = new Intent(Intent.ACTION_CALL);
+            i.setData(Uri.parse("tel:"+phone));
+            startActivity(i);*/
+        });
         btn.setOnClickListener(view -> {
             Map<String,Object> map = new HashMap<>();
             map.put("sender", customer_uid);
@@ -75,9 +92,10 @@ public class ServiceProviderProfile extends AppCompatActivity {
             map.put("name", name);
             map.put("locality",locality);
             map.put("state",state);
-            map.put("pin_code",pinCode);
+            map.put("pin_code",pin_code);
             map.put("price",price);
-            myDB.collection("ServiceRequests").add(map).addOnSuccessListener(aVoid -> {
+            map.put("phone", phone);
+            myDB.collection("ServiceRequests").document(server_provider_uid).set(map).addOnSuccessListener(aVoid -> {
                 btn.setEnabled(false);
                 btn.setText("BOOKED");
                 btn.setBackgroundColor(getColor(R.color.colorAccent2));
@@ -86,5 +104,15 @@ public class ServiceProviderProfile extends AppCompatActivity {
                 Toast.makeText(this, "Unable to Update due to "+e.toString(), Toast.LENGTH_SHORT).show();
             });
         });
+    }
+
+    private void makeCall() {
+        if (ContextCompat.checkSelfPermission(ServiceProviderProfile.this, Manifest.permission.CALL_PHONE)!=
+                PackageManager.PERMISSION_GRANTED){
+            ActivityCompat.requestPermissions(ServiceProviderProfile.this, new String[]{Manifest.permission.CALL_PHONE}, 6);
+        } else {
+            Intent i = new Intent(Intent.ACTION_CALL, Uri.parse("tel:"+phone));
+            startActivity(i);
+        }
     }
 }

@@ -64,7 +64,7 @@ public class Activity_CustomerDetails extends AppCompatActivity {
                 users.put("user_uid", uid);
                 users.put("name", name);
                 users.put("email", email);
-                users.put("user_type" , "service_provider");
+                users.put("user_type" , "customer");
                     myDB.collection("Users").document(uid).set(users).addOnCompleteListener(task -> {
                         progressBarUnset();
                         Toast.makeText(this, "Welcome",
