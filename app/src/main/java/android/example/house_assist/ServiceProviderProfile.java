@@ -27,9 +27,9 @@ public class ServiceProviderProfile extends AppCompatActivity {
 
     CardView cv;
     ImageView ivDp;
-    TextView tvName, tvLocality, tvAddress, tvState, tvPinCode, tvPrice, tvPhone;
+    TextView tvName, tvLocality, tvAddress, tvState, tvPinCode, tvPrice, tvPhone, tvRating;
     Button btn;
-    String dp, name, locality, address, state, pin_code, phone, price, customer_uid, server_provider_uid;
+    String dp, name, locality, address, state, pin_code, phone, price, customer_uid, server_provider_uid, rating;
     FirebaseFirestore myDB;
     FirebaseUser user;
 
@@ -48,6 +48,7 @@ public class ServiceProviderProfile extends AppCompatActivity {
         state = intent.getStringExtra("state");
         dp = intent.getStringExtra("dp");
         phone = intent.getStringExtra("phone");
+        rating = intent.getStringExtra("rating");
 
         ivDp = findViewById(R.id.service_provider_dp);
         tvName = findViewById(R.id.service_provider_name);
@@ -57,6 +58,7 @@ public class ServiceProviderProfile extends AppCompatActivity {
         tvPinCode = findViewById(R.id.service_provider_pincode);
         tvPrice = findViewById(R.id.service_provider_price);
         tvPhone = findViewById(R.id.service_provider_phone);
+        tvRating = findViewById(R.id.service_provider_rating);
         cv = findViewById(R.id.cr_phone);
         btn = findViewById(R.id.btn_service_provider);
 
@@ -78,6 +80,7 @@ public class ServiceProviderProfile extends AppCompatActivity {
         tvPinCode.setText(pin_code);
         tvPhone.setText(phone);
         tvPrice.setText("₹ "+price);
+        tvRating.setText(rating);
         cv.setOnClickListener(view -> {
             makeCall();
             /*Intent i = new Intent(Intent.ACTION_CALL);

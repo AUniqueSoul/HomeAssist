@@ -100,6 +100,7 @@ public class Activity_ServiceProviderDetails extends AppCompatActivity {
             map.put("state",state.getText().toString().trim());
             map.put("pin_code",pincode.getText().toString().trim());
             map.put("price",price.getText().toString().trim());
+            map.put("rating", "5.0");
             myDB.collection(spinner.getSelectedItem().toString()).document(uid).set(map).addOnSuccessListener(aVoid -> {
                 Map<String,Object> users = new HashMap<>();
                 users.put("user_uid", uid);

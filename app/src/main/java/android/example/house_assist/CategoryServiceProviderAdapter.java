@@ -51,6 +51,7 @@ public class CategoryServiceProviderAdapter extends RecyclerView.Adapter<Categor
             i.putExtra("state", data.state);
             i.putExtra("dp", data.dp);
             i.putExtra("phone", data.phone);
+            i.putExtra("rating", data.rating);
             context.startActivity(i);
         });
 
