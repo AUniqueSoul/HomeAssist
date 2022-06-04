@@ -81,7 +81,7 @@ public class OrderFragment extends Fragment {
     @SuppressLint("NotifyDataSetChanged")
     private void EventChangeListener() {
 
-        db.collection("ServiceRequests").whereEqualTo("receiver", uid).addSnapshotListener((value, error) -> {
+        db.collection("ServiceRequests").whereEqualTo("server_provider_uid", uid).addSnapshotListener((value, error) -> {
             assert value != null;
 
             for (DocumentChange dc : value.getDocumentChanges()) {

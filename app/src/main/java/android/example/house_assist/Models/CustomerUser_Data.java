@@ -15,6 +15,8 @@ public class CustomerUser_Data implements Parcelable {
     private String latitude ;
     private String longitude;
     private String Full_Address;
+    private String customer_id;
+    private String service_provider_id;
 
     public String getLatitude() {
         return latitude;
@@ -46,8 +48,9 @@ public class CustomerUser_Data implements Parcelable {
         return name;
     }
 
-    public void setName(String name) {
+    public String setName(String name) {
         this.name = name;
+        return name;
     }
 
     public String getMobile() {
@@ -62,8 +65,9 @@ public class CustomerUser_Data implements Parcelable {
         return email;
     }
 
-    public void setEmail(String email) {
+    public String setEmail(String email) {
         this.email = email;
+        return email;
     }
 
     public String getAddress1() {
@@ -102,8 +106,26 @@ public class CustomerUser_Data implements Parcelable {
         return State;
     }
 
+    public String getCustomer_id() {
+        return customer_id;
+    }
+
+    public String setCustomer_id(String customer_id) {
+        this.customer_id = customer_id;
+        return customer_id;
+    }
+
+    public String getService_provider_id() {
+        return service_provider_id;
+    }
+
+    public void setService_provider_id(String service_provider_id) {
+        this.service_provider_id = service_provider_id;
+    }
+
     public void setState(String state) {
         State = state;
+
 
 
     }

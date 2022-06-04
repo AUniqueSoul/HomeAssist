@@ -50,11 +50,10 @@ public class OrdersAdapter extends RecyclerView.Adapter<OrdersAdapter.MyViewHold
         ServiceProvider data = ordersArrayList.get(position);
         holder.setIsRecyclable(false);
         holder.name.setText(data.name);
-        holder.locality.setText(data.locality);
-        holder.address.setText(data.pin_code);
-        holder.price.setText(data.price);
+        holder.pin_code.setText(data.pin_code);
+        holder.address.setText(data.address1);
         holder.cv.setOnClickListener(view -> {
-            Intent i = new Intent(context, ServiceProviderProfile.class);
+            Intent i = new Intent(context, OrderServiceProviderProfile.class);
             i.putExtra("server_provider_uid", data.server_provider_uid);
             i.putExtra("name", data.name);
             i.putExtra("address1", data.address1);
@@ -75,17 +74,15 @@ public class OrdersAdapter extends RecyclerView.Adapter<OrdersAdapter.MyViewHold
     public class MyViewHolder extends RecyclerView.ViewHolder {
 
         CardView cv;
-        TextView name, locality, address, price;
+        TextView name ,pin_code, address;
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
 
             cv = itemView.findViewById(R.id.cv_order);
             name = itemView.findViewById(R.id.order_name);
-            address = itemView.findViewById(R.id.order_locality);
-            locality = itemView.findViewById(R.id.order_address);
-            price = itemView.findViewById(R.id.order_price);
-
+            pin_code = itemView.findViewById(R.id.order_pin_code);
+            address = itemView.findViewById(R.id.order_address);
         }
     }
 }

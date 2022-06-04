@@ -4,6 +4,7 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Users/varga/Downloads/house_assist-master/app/src/main/res/drawable/rounded_button.xml" value="0.2265" />
+        <entry key="..\:/Users/varga/Downloads/house_assist-master/app/src/main/res/drawable/rounded_button_orange.xml" value="0.2265" />
         <entry key="..\:/Users/varga/Downloads/house_assist-master/app/src/main/res/layout/activity__admin__authenticate.xml" value="0.21077383497221033" />
         <entry key="..\:/Users/varga/Downloads/house_assist-master/app/src/main/res/layout/activity__all__service_user.xml" value="0.21077383497221033" />
         <entry key="..\:/Users/varga/Downloads/house_assist-master/app/src/main/res/layout/activity__chat.xml" value="0.21077383497221033" />
@@ -44,6 +45,7 @@
         <entry key="..\:/Users/varga/Downloads/house_assist-master/app/src/main/res/layout/item_service_providers.xml" value="0.25677083333333334" />
         <entry key="..\:/Users/varga/Downloads/house_assist-master/app/src/main/res/layout/item_service_requests.xml" value="0.21077383497221033" />
         <entry key="..\:/Users/varga/Downloads/house_assist-master/app/src/main/res/layout/nav_header_main.xml" value="0.21077383497221033" />
+        <entry key="..\:/Users/varga/Downloads/house_assist-master/app/src/main/res/layout/order_service_provider_profile.xml" value="0.21077383497221033" />
         <entry key="..\:/Users/varga/Downloads/house_assist-master/app/src/main/res/layout/orders_row.xml" value="0.21077383497221033" />
         <entry key="..\:/Users/varga/Downloads/house_assist-master/app/src/main/res/layout/pager_item.xml" value="0.25677083333333334" />
         <entry key="..\:/Users/varga/Downloads/house_assist-master/app/src/main/res/layout/service_provider_list_row.xml" value="0.25677083333333334" />

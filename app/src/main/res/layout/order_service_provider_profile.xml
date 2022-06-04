@@ -62,7 +62,7 @@
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:cardElevation="5dp"
+            app:cardElevation="1dp"
             app:cardCornerRadius="20dp">
 
             <LinearLayout
@@ -164,51 +164,10 @@
 
         </androidx.cardview.widget.CardView>
 
-        <androidx.cardview.widget.CardView
-            android:id="@+id/cr_phone"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_above="@+id/btn_service_provider"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginEnd="20dp"
-            android:layout_marginBottom="20dp"
-            app:cardBackgroundColor="@color/colorAccent2"
-            app:cardCornerRadius="20dp">
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <TextView
-                    android:id="@+id/service_provider_phone"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="20dp"
-                    android:layout_marginTop="20dp"
-                    android:layout_marginEnd="20dp"
-                    android:layout_marginBottom="20dp"
-                    android:text="CAll"
-                    android:textAlignment="center"
-                    android:textColor="@color/whiteTextColor"
-                    android:textSize="18sp"
-                    android:textStyle="italic" />
-
-                <ImageView
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:background="@drawable/ic_phone_black_24dp"
-                    android:backgroundTint="@color/whiteTextColor"
-                    android:layout_centerVertical="true"
-                    android:layout_marginStart="20dp"/>
-
-            </RelativeLayout>
-
-        </androidx.cardview.widget.CardView>
-
         <RelativeLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
             android:layout_marginBottom="30dp">
 
             <Button
@@ -218,12 +177,13 @@
                 android:layout_alignParentBottom="true"
                 android:layout_marginStart="20dp"
                 android:layout_marginEnd="20dp"
-                android:background="@drawable/rounded_button_blue"
+                android:background="@drawable/rounded_button_orange"
                 android:padding="20dp"
-                android:text="BOOK"
+                android:text="BOOKED"
                 android:textColor="@color/whiteTextColor"
                 android:textSize="18dp"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                android:clickable="false"/>
 
         </RelativeLayout>
 

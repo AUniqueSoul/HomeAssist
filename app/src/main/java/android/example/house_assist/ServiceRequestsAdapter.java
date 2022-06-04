@@ -55,15 +55,16 @@ public class ServiceRequestsAdapter extends RecyclerView.Adapter<ServiceRequests
 
         ServiceProvider data = serviceRequestsArrayList.get(position);
         holder.setIsRecyclable(false);
-        holder.name.setText(data.name);
-        holder.address.setText(data.address1);
+        holder.name.setText(data.customer_name);
+        holder.address.setText(data.customer_address);
         holder.reject.setOnClickListener(view -> {
-
+            db.collection("ServiceRequests").document(uid).delete();
+                notifyItemRemoved(position);
         });
         holder.accept.setOnClickListener(view -> {
             Map<String,Object> map = new HashMap<>();
-            map.put("customer_uid", data.sender);
-            map.put("server_provider_uid", data.receiver);
+            map.put("customer_uid", data.customer_uid);
+            map.put("server_provider_uid", data.server_provider_uid);
             map.put("address1", data.address1);
             map.put("name", data.name);
             map.put("locality",data.locality);

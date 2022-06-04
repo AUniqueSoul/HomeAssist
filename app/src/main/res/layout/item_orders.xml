@@ -36,16 +36,7 @@
             android:layout_margin="5dp"/>
 
         <TextView
-            android:id="@+id/order_locality"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Locality"
-            android:textSize="20sp"
-            android:textColor="#000"
-            android:layout_margin="5dp"/>
-
-        <TextView
-            android:id="@+id/order_address"
+            android:id="@+id/order_pin_code"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Pin code"
@@ -54,10 +45,10 @@
             android:layout_margin="5dp"/>
 
         <TextView
-            android:id="@+id/order_price"
+            android:id="@+id/order_address"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Price"
+            android:text="Address"
             android:textSize="20sp"
             android:textColor="#000"
             android:layout_margin="5dp"/>

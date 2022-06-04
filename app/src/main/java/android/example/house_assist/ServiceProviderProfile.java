@@ -8,6 +8,7 @@ import androidx.core.content.ContextCompat;
 import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.example.house_assist.Models.CustomerUser_Data;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
@@ -18,6 +19,7 @@ import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.HashMap;
@@ -25,6 +27,7 @@ import java.util.Map;
 
 public class ServiceProviderProfile extends AppCompatActivity {
 
+    private final static String TAG = "ServiceProviderProfile";
     CardView cv;
     ImageView ivDp;
     TextView tvName, tvLocality, tvAddress, tvState, tvPinCode, tvPrice, tvPhone, tvRating;
@@ -83,29 +86,40 @@ public class ServiceProviderProfile extends AppCompatActivity {
         tvRating.setText(rating);
         cv.setOnClickListener(view -> {
             makeCall();
-            /*Intent i = new Intent(Intent.ACTION_CALL);
-            i.setData(Uri.parse("tel:"+phone));
-            startActivity(i);*/
         });
         btn.setOnClickListener(view -> {
-            Map<String,Object> map = new HashMap<>();
-            map.put("sender", customer_uid);
-            map.put("receiver", server_provider_uid);
-            map.put("address1",address);
-            map.put("name", name);
-            map.put("locality",locality);
-            map.put("state",state);
-            map.put("pin_code",pin_code);
-            map.put("price",price);
-            map.put("phone", phone);
-            myDB.collection("ServiceRequests").document(server_provider_uid).set(map).addOnSuccessListener(aVoid -> {
-                btn.setEnabled(false);
-                btn.setText("BOOKED");
-                btn.setBackgroundColor(getColor(R.color.colorAccent2));
-            }).addOnFailureListener(e -> {
-                //Log.d(TAG,"Failure Details"+e.toString());
-                Toast.makeText(this, "Unable to Update due to "+e.toString(), Toast.LENGTH_SHORT).show();
+            myDB.collection("Users").document(customer_uid).get().addOnCompleteListener(task -> {
+                DocumentSnapshot documentSnapshot = task.getResult();
+                CustomerUser_Data data = new CustomerUser_Data();
+                String customer_name = String.valueOf(documentSnapshot.get("name"));
+                String customer_address = String.valueOf(documentSnapshot.get("address"));
+                Log.d(TAG, "customer_name: "+customer_name);
+                Log.d(TAG, "customer_address: "+customer_address);
+                insertData(customer_name, customer_address);
             });
+        });
+    }
+
+    private void insertData(String customer_name, String customer_address) {
+        Map<String,Object> map = new HashMap<>();
+        map.put("customer_name", customer_name);
+        map.put("customer_address", customer_address);
+        map.put("customer_uid", customer_uid);
+        map.put("server_provider_uid", server_provider_uid);
+        map.put("address1",address);
+        map.put("name", name);
+        map.put("locality",locality);
+        map.put("state",state);
+        map.put("pin_code",pin_code);
+        map.put("price",price);
+        map.put("phone", phone);
+        myDB.collection("ServiceRequests").document(server_provider_uid).set(map).addOnSuccessListener(aVoid -> {
+            btn.setEnabled(false);
+            btn.setText("BOOKED");
+            btn.setBackgroundColor(getColor(R.color.colorAccent2));
+        }).addOnFailureListener(e -> {
+            //Log.d(TAG,"Failure Details"+e.toString());
+            Toast.makeText(this, "Unable to Update due to "+e.toString(), Toast.LENGTH_SHORT).show();
         });
     }
 

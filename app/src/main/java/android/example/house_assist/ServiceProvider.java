@@ -2,27 +2,9 @@ package android.example.house_assist;
 
 public class ServiceProvider {
 
-    String address1, address2, dp, locality, name, pin_code, price, phone, service_type, state, server_provider_uid, customer_uid, sender, receiver, rating;
+    String address1, address2, dp, locality, name, pin_code, price, phone, service_type, state, server_provider_uid, customer_uid, rating, customer_name, customer_address;
 
     public ServiceProvider() {
-    }
-
-    public ServiceProvider(String address1, String address2, String dp, String locality, String name, String pin_code, String price, String phone, String service_type, String state, String server_provider_uid, String customer_uid, String sender, String receiver, String rating) {
-        this.address1 = address1;
-        this.address2 = address2;
-        this.dp = dp;
-        this.locality = locality;
-        this.name = name;
-        this.pin_code = pin_code;
-        this.price = price;
-        this.phone = phone;
-        this.service_type = service_type;
-        this.state = state;
-        this.server_provider_uid = server_provider_uid;
-        this.customer_uid = customer_uid;
-        this.sender = sender;
-        this.receiver = receiver;
-        this.rating = rating;
     }
 
     public String getAddress1() {
@@ -121,27 +103,27 @@ public class ServiceProvider {
         this.customer_uid = customer_uid;
     }
 
-    public String getSender() {
-        return sender;
-    }
-
-    public void setSender(String sender) {
-        this.sender = sender;
-    }
-
-    public String getReceiver() {
-        return receiver;
-    }
-
-    public void setReceiver(String receiver) {
-        this.receiver = receiver;
-    }
-
     public String getRating() {
         return rating;
     }
 
     public void setRating(String rating) {
         this.rating = rating;
+    }
+
+    public String getCustomer_name() {
+        return customer_name;
+    }
+
+    public void setCustomer_name(String customer_name) {
+        this.customer_name = customer_name;
+    }
+
+    public String getCustomer_address() {
+        return customer_address;
+    }
+
+    public void setCustomer_address(String customer_address) {
+        this.customer_address = customer_address;
     }
 }
