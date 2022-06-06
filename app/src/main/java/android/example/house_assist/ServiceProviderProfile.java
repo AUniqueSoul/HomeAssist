@@ -12,6 +12,7 @@ import android.example.house_assist.Models.CustomerUser_Data;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -24,6 +25,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Objects;
 
 public class ServiceProviderProfile extends AppCompatActivity {
 
@@ -62,7 +64,7 @@ public class ServiceProviderProfile extends AppCompatActivity {
         tvPrice = findViewById(R.id.service_provider_price);
         tvPhone = findViewById(R.id.service_provider_phone);
         tvRating = findViewById(R.id.service_provider_rating);
-        cv = findViewById(R.id.cr_phone);
+        cv = findViewById(R.id.cv_phone);
         btn = findViewById(R.id.btn_service_provider);
 
         myDB = FirebaseFirestore.getInstance();
@@ -130,6 +132,19 @@ public class ServiceProviderProfile extends AppCompatActivity {
         } else {
             Intent i = new Intent(Intent.ACTION_CALL, Uri.parse("tel:"+phone));
             startActivity(i);
+        }
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        if (Objects.equals(customer_uid, server_provider_uid)){
+            Toast.makeText(this, "HELLO! "+name, Toast.LENGTH_SHORT).show();
+            cv.setVisibility(View.GONE);
+            btn.setEnabled(false);
+            //btn.setBackgroundColor(getColor(android.R.color.darker_gray));
+            btn.setText("Can't book yourself.");
+            btn.setTextColor(getColor(R.color.whiteTextColor));
         }
     }
 }

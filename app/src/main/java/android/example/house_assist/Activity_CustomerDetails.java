@@ -64,7 +64,12 @@ public class Activity_CustomerDetails extends AppCompatActivity {
                 users.put("user_uid", uid);
                 users.put("name", name);
                 users.put("email", email);
-                users.put("address", address1.getText().toString());
+                users.put("address1", address1.getText().toString());
+                users.put("address2",address2.getText().toString().trim());
+                users.put("phone", phone);
+                users.put("locality",locality.getText().toString().trim());
+                users.put("state",state.getText().toString().trim());
+                users.put("pin_code",pincode.getText().toString().trim());
                 users.put("user_type" , "customer");
                     myDB.collection("Users").document(uid).set(users).addOnCompleteListener(task -> {
                         progressBarUnset();

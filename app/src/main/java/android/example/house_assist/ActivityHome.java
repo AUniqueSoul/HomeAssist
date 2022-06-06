@@ -56,7 +56,7 @@ public class ActivityHome extends AppCompatActivity implements ChipNavigationBar
     private BottomSheetDialog bottomSheetDialogRating,bottomSheetDialogFeedback;
     private FirebaseFirestore myDB;
     private static String TAG = "Main";
-    private String uid,Type;
+    private String uid, user_type;
     private Double userLat=0.0,userLng=0.0;
     FirebaseAuth mAuth;
     FirebaseUser user;
@@ -101,9 +101,10 @@ public class ActivityHome extends AppCompatActivity implements ChipNavigationBar
                     fragment = new OrderFragment();
                     loadFragment(fragment);
                     break;
-                case R.id.nav_dashboard:
-                    fragment = new Fragment_Account(uid,ActivityHome.this);
-                    loadFragment(fragment);
+                case R.id.nav_profile:
+                    Intent i = new Intent(this, EditUserProfile.class);
+                    i.putExtra("type", user_type);
+                    startActivity(i);
                     break;
                 case R.id.nav_about_us:
                     bottomSheetDialogRating = new BottomSheetDialog(ActivityHome.this);
@@ -218,9 +219,11 @@ public class ActivityHome extends AppCompatActivity implements ChipNavigationBar
             CustomerUser_Data data = new CustomerUser_Data();
             data.setName(documentSnapshot.getData().get("name").toString());
             data.setEmail(documentSnapshot.getData().get("email").toString());
+            data.setUser_type(documentSnapshot.getData().get("user_type").toString());
             getSupportActionBar().setTitle("Welcome, "+data.getName());
             nav_header_email.setText(data.getEmail());
             nav_header_name.setText(data.getName());
+            user_type = data.getUser_type();
         });
 
     }

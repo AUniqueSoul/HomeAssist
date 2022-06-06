@@ -62,6 +62,7 @@
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
             app:cardElevation="5dp"
             app:cardCornerRadius="20dp">
 
@@ -165,7 +166,7 @@
         </androidx.cardview.widget.CardView>
 
         <androidx.cardview.widget.CardView
-            android:id="@+id/cr_phone"
+            android:id="@+id/cv_phone"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_above="@+id/btn_service_provider"
@@ -207,7 +208,7 @@
         </androidx.cardview.widget.CardView>
 
         <RelativeLayout
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="30dp">
 

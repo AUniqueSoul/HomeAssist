@@ -203,7 +203,7 @@ public class MainActivity extends AppCompatActivity {
                         getSupportActionBar().setTitle("Orders");
                         loadFragment(fragment);
                         break;
-                    case R.id.nav_dashboard:
+                    case R.id.nav_profile:
                         fragment = new Fragment_Account(UID,MainActivity.this);
                         fragment.setArguments(bundle);
                         getSupportActionBar().setTitle("Dashboard");

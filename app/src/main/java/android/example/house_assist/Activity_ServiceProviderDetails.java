@@ -107,6 +107,14 @@ public class Activity_ServiceProviderDetails extends AppCompatActivity {
                 users.put("name", name);
                 users.put("email", email);
                 users.put("phone", phone);
+                users.put("service_type",spinner.getSelectedItem().toString());
+                users.put("address1",address1.getText().toString().trim());
+                users.put("address2",address2.getText().toString().trim());
+                users.put("locality",locality.getText().toString().trim());
+                users.put("state",state.getText().toString().trim());
+                users.put("pin_code",pincode.getText().toString().trim());
+                users.put("price",price.getText().toString().trim());
+                users.put("rating", "5.0");
                 users.put("user_type" , "service_provider");
                 myDB.collection("Users").document(uid).set(users).addOnCompleteListener(task -> {
                     progressBarUnset();

@@ -13,7 +13,7 @@
             android:title="My Orders" />
 
         <item
-            android:id="@+id/nav_dashboard"
+            android:id="@+id/nav_profile"
             android:icon="@drawable/ic_person_black_24dp"
             android:title="Profile"/>
 
@@ -34,12 +34,6 @@
         </menu>
     </item>
 
-    <item
-        android:title=""></item>
-    <item
-        android:title=""></item>
-    <item
-        android:title=""></item>
     <item
         android:id="@+id/nav_logout"
         android:icon="@drawable/ic_reply_black_24dp"

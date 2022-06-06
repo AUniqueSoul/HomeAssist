@@ -6,6 +6,7 @@ import android.os.Parcelable;
 public class CustomerUser_Data implements Parcelable {
     private String name;
     private String mobile;
+    private String phone;
     private String email;
     private String address1;
     private String address2;
@@ -17,6 +18,7 @@ public class CustomerUser_Data implements Parcelable {
     private String Full_Address;
     private String customer_id;
     private String service_provider_id;
+    private String user_type;
 
     public String getLatitude() {
         return latitude;
@@ -42,8 +44,6 @@ public class CustomerUser_Data implements Parcelable {
         Full_Address = full_Address;
     }
 
-
-
     public String getName() {
         return name;
     }
@@ -55,6 +55,14 @@ public class CustomerUser_Data implements Parcelable {
 
     public String getMobile() {
         return mobile;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
     }
 
     public void setMobile(String mobile) {
@@ -115,6 +123,14 @@ public class CustomerUser_Data implements Parcelable {
         return customer_id;
     }
 
+    public String getUser_type() {
+        return user_type;
+    }
+
+    public void setUser_type(String user_type) {
+        this.user_type = user_type;
+    }
+
     public String getService_provider_id() {
         return service_provider_id;
     }
@@ -165,6 +181,10 @@ public class CustomerUser_Data implements Parcelable {
         this.latitude = in.readString();
         this.longitude = in.readString();
         this.Full_Address = in.readString();
+    }
+
+    public CustomerUser_Data(String user_type) {
+        this.user_type = user_type;
     }
 
     public static final Creator<CustomerUser_Data> CREATOR = new Creator<CustomerUser_Data>() {
