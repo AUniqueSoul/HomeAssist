@@ -141,10 +141,7 @@ public class ServiceProviderProfile extends AppCompatActivity {
         if (Objects.equals(customer_uid, server_provider_uid)){
             Toast.makeText(this, "HELLO! "+name, Toast.LENGTH_SHORT).show();
             cv.setVisibility(View.GONE);
-            btn.setEnabled(false);
-            //btn.setBackgroundColor(getColor(android.R.color.darker_gray));
-            btn.setText("Can't book yourself.");
-            btn.setTextColor(getColor(R.color.whiteTextColor));
+            btn.setVisibility(View.GONE);
         }
     }
 }
