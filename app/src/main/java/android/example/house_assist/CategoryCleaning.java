@@ -12,7 +12,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.ArrayList;
 
-public class CategoryPlumber extends AppCompatActivity {
+public class CategoryCleaning extends AppCompatActivity {
 
     RecyclerView rv;
     ArrayList<ServiceProvider> serviceProviderArrayList;
@@ -22,9 +22,9 @@ public class CategoryPlumber extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.category_plumber);
+        setContentView(R.layout.category_cleaning);
 
-        rv = findViewById(R.id.rv_plumber);
+        rv = findViewById(R.id.rv_cleaning);
         rv.setHasFixedSize(true);
         rv.setLayoutManager(new LinearLayoutManager(this));
 
@@ -40,15 +40,14 @@ public class CategoryPlumber extends AppCompatActivity {
     @SuppressLint("NotifyDataSetChanged")
     private void EventChangeListener() {
 
-        db.collection("Plumber").addSnapshotListener((value, error) -> {
+        db.collection("Cleaning").addSnapshotListener((value, error) -> {
             assert value != null;
-            for (DocumentChange dc : value.getDocumentChanges()){
-                if (dc.getType() == DocumentChange.Type.ADDED){
+            for (DocumentChange dc : value.getDocumentChanges()) {
+                if (dc.getType() == DocumentChange.Type.ADDED) {
                     serviceProviderArrayList.add(dc.getDocument().toObject(ServiceProvider.class));
                 }
                 adapter.notifyDataSetChanged();
             }
         });
-
     }
 }

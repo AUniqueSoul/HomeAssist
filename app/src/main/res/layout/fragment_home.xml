@@ -179,7 +179,7 @@
                     android:textSize="17sp" />
 
                 <ImageView
-                    android:id="@+id/category_watching_machine"
+                    android:id="@+id/category_appliances"
                     android:layout_width="80dp"
                     android:layout_height="80dp"
                     android:layout_below="@+id/category_massage_txt"
@@ -190,12 +190,14 @@
                     android:src="@drawable/washing_machine" />
 
                 <TextView
-                    android:id="@+id/category_watching_machine_txt"
+                    android:id="@+id/category_appliances_txt"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_below="@+id/category_watching_machine"
+                    android:layout_below="@+id/category_appliances"
                     android:layout_gravity="center"
-                    android:layout_margin="10dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginEnd="10dp"
+                    android:layout_marginBottom="10dp"
                     android:fontFamily="@font/montserrat"
                     android:text="Appliances"
                     android:textColor="#000"
@@ -221,7 +223,7 @@
                     android:layout_centerHorizontal="true"
                     android:layout_gravity="center"
                     android:fontFamily="@font/montserrat"
-                    android:text="Cleaning"
+                    android:text="Salon"
                     android:textColor="#000"
                     android:textSize="17sp" />
 
@@ -244,9 +246,10 @@
                     android:layout_below="@+id/category_delivery"
                     android:layout_alignParentEnd="true"
                     android:layout_gravity="center"
-                    android:layout_marginEnd="20dp"
+                    android:layout_marginEnd="30dp"
                     android:fontFamily="@font/montserrat"
-                    android:text="Electrician"
+                    android:text="Delivery"
+                    android:textAlignment="center"
                     android:textColor="#000"
                     android:textSize="17sp" />
 

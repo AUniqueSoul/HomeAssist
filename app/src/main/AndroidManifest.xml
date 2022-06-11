@@ -18,6 +18,24 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
+            android:name=".CategoryDelivery"
+            android:exported="false" />
+        <activity
+            android:name=".CategorySaloon"
+            android:exported="false" />
+        <activity
+            android:name=".CategoryAppliances"
+            android:exported="false" />
+        <activity
+            android:name=".CategoryPaint"
+            android:exported="false" />
+        <activity
+            android:name=".CategoryCleaning"
+            android:exported="false" />
+        <activity
+            android:name=".CategoryMassage"
+            android:exported="false" />
+        <activity
             android:name=".EditUserProfile"
             android:exported="false" />
         <activity

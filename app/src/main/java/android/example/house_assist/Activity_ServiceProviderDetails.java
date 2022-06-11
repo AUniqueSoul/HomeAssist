@@ -78,7 +78,7 @@ public class Activity_ServiceProviderDetails extends AppCompatActivity {
         list.add("Painting");
         list.add("Appliances");
         list.add("Salon");
-        list.add("PackersandMovers");
+        list.add("Delivery");
         ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this,
                 android.R.layout.simple_spinner_item, list);
         dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
