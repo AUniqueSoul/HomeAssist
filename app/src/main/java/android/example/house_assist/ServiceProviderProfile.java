@@ -34,7 +34,7 @@ public class ServiceProviderProfile extends AppCompatActivity {
     ImageView ivDp;
     TextView tvName, tvLocality, tvAddress, tvState, tvPinCode, tvPrice, tvPhone, tvRating;
     Button btn;
-    String dp, name, locality, address, state, pin_code, phone, price, customer_uid, server_provider_uid, rating;
+    String dp, name, locality, address, state, pin_code, phone, price, uid, server_provider_uid, rating;
     FirebaseFirestore myDB;
     FirebaseUser user;
 
@@ -70,7 +70,7 @@ public class ServiceProviderProfile extends AppCompatActivity {
         myDB = FirebaseFirestore.getInstance();
         user = FirebaseAuth.getInstance().getCurrentUser();
         assert user != null;
-        customer_uid = user.getUid();
+        uid = user.getUid();
 
         initData();
 
@@ -90,7 +90,7 @@ public class ServiceProviderProfile extends AppCompatActivity {
             makeCall();
         });
         btn.setOnClickListener(view -> {
-            myDB.collection("Users").document(customer_uid).get().addOnCompleteListener(task -> {
+            myDB.collection("Users").document(uid).get().addOnCompleteListener(task -> {
                 DocumentSnapshot documentSnapshot = task.getResult();
                 CustomerUser_Data data = new CustomerUser_Data();
                 String customer_name = String.valueOf(documentSnapshot.get("name"));
@@ -106,7 +106,7 @@ public class ServiceProviderProfile extends AppCompatActivity {
         Map<String,Object> map = new HashMap<>();
         map.put("customer_name", customer_name);
         map.put("customer_address", customer_address);
-        map.put("customer_uid", customer_uid);
+        map.put("customer_uid", uid);
         map.put("server_provider_uid", server_provider_uid);
         map.put("address1",address);
         map.put("name", name);
@@ -138,7 +138,15 @@ public class ServiceProviderProfile extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
-        if (Objects.equals(customer_uid, server_provider_uid)){
+        myDB.collection("Users").document(uid).get().addOnCompleteListener(task -> {
+            DocumentSnapshot documentSnapshot = task.getResult();
+            String user_type = String.valueOf(documentSnapshot.get("user_type"));
+            if (user_type.equals("service_provider".trim())){
+                cv.setVisibility(View.GONE);
+                btn.setVisibility(View.GONE);
+            }
+        });
+        if (Objects.equals(uid, server_provider_uid)){
             Toast.makeText(this, "HELLO! "+name, Toast.LENGTH_SHORT).show();
             cv.setVisibility(View.GONE);
             btn.setVisibility(View.GONE);
